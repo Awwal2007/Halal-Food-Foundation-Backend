@@ -103,7 +103,7 @@ const deleteNewsById = async (req, res, next)=>{
             })
         }
         res.status(202).json({
-            status: "error",
+            status: "success",
             message: "News deleted successfully"
         })
     } catch (error) {
