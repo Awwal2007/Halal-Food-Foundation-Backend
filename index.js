@@ -19,7 +19,7 @@ require("./Config/connectToDb");
 const clientDomain = process.env.client_domain
 
 app.use(cors({
-    origin: `${clientDomain}`
+    origin: "*"
 }))
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
