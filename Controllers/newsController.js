@@ -2,12 +2,12 @@ const newsModel = require('../Models/news')
 
 const createNews = async (req, res, next) => {
   try {
-    if (!req.files || !req.files.mainImage) {
-      return res.status(400).json({
-        status: "error",
-        message: "Main image is required",
-      });
-    }
+    // if (!req.files || !req.files.mainImage) {
+    //   return res.status(400).json({
+    //     status: "error",
+    //     message: "Main image is required",
+    //   });
+    // }
 
     const news = await newsModel.create({
       ...req.body,
@@ -114,15 +114,15 @@ const deleteNewsById = async (req, res, next)=>{
 
 const updateNews = async (req, res, next)=>{
     const {id} = req.params.id
-    const { title, date, description } = req.body;
+    const { title, date, description, link } = req.body;
     try {
-        if (!req.file || !req.file.path) {
-            return res.status(400).json({
-                status: "error",
-                message: "Image upload failed or missing",
-            });
-        }
-        const updatedData = { title, date, description, image: req.file.path };
+        // if (!req.file || !req.file.path) {
+        //     return res.status(400).json({
+        //         status: "error",
+        //         message: "Image upload failed or missing",
+        //     });
+        // }
+        const updatedData = { title, link, date, description, image: req.file.path };
         const updatedEvent = await newsModel.findByIdAndUpdate(id, updatedData, { new: true });
         res.status(200).json({
             status: "success",
