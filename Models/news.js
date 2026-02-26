@@ -3,7 +3,7 @@ const newsSchema = new mongoose.Schema({
     title:{type: String, required: true},
     link:{type: String},
     date:{type: Date, required: true},
-    mainImage:{type: String, required: true},
+    // mainImage:{type: String, required: true},
     description:{type: String, required: true},
     image1:{type: String, },
     image2:{type: String, },
