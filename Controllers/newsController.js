@@ -11,10 +11,10 @@ const createNews = async (req, res, next) => {
 
     const news = await newsModel.create({
       ...req.body,
-      mainImage: req.files.mainImage[0].path.replace(/\\/g, '/'),
-      image1: req.files.image1?.[0]?.path.replace(/\\/g, '/'),
-      image2: req.files.image2?.[0]?.path.replace(/\\/g, '/'),
-      image3: req.files.image3?.[0]?.path.replace(/\\/g, '/'),
+    //   mainImage: req.files.mainImage[0].path.replace(/\\/g, '/'),
+    //   image1: req.files.image1?.[0]?.path.replace(/\\/g, '/'),
+    //   image2: req.files.image2?.[0]?.path.replace(/\\/g, '/'),
+    //   image3: req.files.image3?.[0]?.path.replace(/\\/g, '/'),
       createdBy: req.user?.id || null,
     });
 
