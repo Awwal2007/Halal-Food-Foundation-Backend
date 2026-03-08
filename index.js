@@ -8,6 +8,7 @@ const newsRouter = require('./Routes/newsRouter');
 const authRouter = require('./Routes/authRouter');
 const facebookRouter = require('./Routes/facebookRouter');
 const heroRouter = require('./Routes/heroRouter');
+const formRouter = require('./Routes/formRouter');
 dotenv.config()
 
 require("./Config/connectToDb");
@@ -36,6 +37,7 @@ app.use("/api/news", newsRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/facebook", facebookRouter);
 app.use("/api/hero", heroRouter);
+app.use("/api/form", formRouter);
 
 app.use(express.json())
 
