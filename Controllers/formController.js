@@ -66,9 +66,9 @@ const submitForm = async (req, res, next) => {
 
         // It is recommended to verify a custom domain in Resend and replace onboarding@resend.dev
         await resend.emails.send({
-            from: 'Acme <onboarding@resend.dev>', 
-            to: ['info@halalfoodfoundation.co.uk', 'info@halalfoodauthority.co.uk'],
-            subject: 'New Website Form Submission',
+            from: 'HFF <no_reply@halalfoodfoundation.co.uk>', 
+            to: 'info@halalfoodfoundation.co.uk',
+            subject: 'Contact Form Submission',
             html: emailHtml,
             reply_to: emailAddress
         });
