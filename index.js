@@ -26,9 +26,10 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(morgan("dev"))
 
-app.listen(400, ()=>{
-    console.log('listen to port 400');    
-})
+if (process.env.NODE_ENV !== 'production') {
+    const port = 400;
+    app.listen(port, () => console.log(`Listening on port ${port}`));
+}
 //Routes
 app.get("/", (req, res)=>{res.send("Welcome to Halal Food Foundation Api version 1.0")})
 
@@ -50,3 +51,6 @@ app.all("/{*any}", (req, res) => {
 // });
 
 app.use(errorHandler);
+
+
+module.exports = app;
