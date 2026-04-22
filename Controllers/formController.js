@@ -2,11 +2,7 @@ const Form = require('../Models/form');
 const { Resend } = require('resend');
 
 // Make sure to add RESEND_API_KEY to your .env file
-<<<<<<< HEAD
 const resend = new Resend(process.env.RESEND_API_KEY || 're_dummy_key');
-=======
-const resend = new Resend(process.env.RESEND_API_KEY);
->>>>>>> 12fc235307d647144821993c6b20d341a940f330
 
 const submitForm = async (req, res, next) => {
     try {
