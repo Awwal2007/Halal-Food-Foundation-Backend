@@ -9,7 +9,10 @@ const authRouter = require('./Routes/authRouter');
 const facebookRouter = require('./Routes/facebookRouter');
 const heroRouter = require('./Routes/heroRouter');
 const formRouter = require('./Routes/formRouter');
+<<<<<<< HEAD
 const trusteeRouter = require('./Routes/trusteeRouter');
+=======
+>>>>>>> 12fc235307d647144821993c6b20d341a940f330
 dotenv.config()
 
 const connectToDb = require("./Config/connectToDb");
@@ -27,6 +30,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(morgan("dev"))
 
+<<<<<<< HEAD
 
 const startServer = async()=>{
 	try {
@@ -42,6 +46,12 @@ const startServer = async()=>{
 
 startServer()
 
+=======
+if (process.env.NODE_ENV !== 'production') {
+    const port = 400;
+    app.listen(port, () => console.log(`Listening on port ${port}`));
+}
+>>>>>>> 12fc235307d647144821993c6b20d341a940f330
 //Routes
 app.get("/", (req, res)=>{res.send("Welcome to Halal Food Foundation Api version 1.0")})
 
@@ -51,7 +61,10 @@ app.use("/api/auth", authRouter);
 app.use("/api/facebook", facebookRouter);
 app.use("/api/hero", heroRouter);
 app.use("/api/form", formRouter);
+<<<<<<< HEAD
 app.use("/api/trustee", trusteeRouter);
+=======
+>>>>>>> 12fc235307d647144821993c6b20d341a940f330
 
 app.use(express.json())
 
@@ -65,4 +78,9 @@ app.all("/{*any}", (req, res) => {
 
 app.use(errorHandler);
 
+<<<<<<< HEAD
 module.exports = app
+=======
+
+module.exports = app;
+>>>>>>> 12fc235307d647144821993c6b20d341a940f330
