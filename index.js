@@ -8,9 +8,11 @@ const newsRouter = require('./Routes/newsRouter');
 const authRouter = require('./Routes/authRouter');
 const facebookRouter = require('./Routes/facebookRouter');
 const heroRouter = require('./Routes/heroRouter');
+const formRouter = require('./Routes/formRouter');
+const trusteeRouter = require('./Routes/trusteeRouter');
 dotenv.config()
 
-require("./Config/connectToDb");
+const connectToDb = require("./Config/connectToDb");
 // require("./Services/Nodemailer/transporter");
 
 // const newsRouter = require('./Routes/newsRouter');
@@ -25,9 +27,21 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(morgan("dev"))
 
-app.listen(400, ()=>{
-    console.log('listen to port 400');    
-})
+
+const startServer = async()=>{
+	try {
+		await connectToDb()
+        
+		app.listen(400, ()=>{
+			console.log('listen to port 400');    
+		})
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+startServer()
+
 //Routes
 app.get("/", (req, res)=>{res.send("Welcome to Halal Food Foundation Api version 1.0")})
 
@@ -36,6 +50,8 @@ app.use("/api/news", newsRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/facebook", facebookRouter);
 app.use("/api/hero", heroRouter);
+app.use("/api/form", formRouter);
+app.use("/api/trustee", trusteeRouter);
 
 app.use(express.json())
 
@@ -48,3 +64,5 @@ app.all("/{*any}", (req, res) => {
 // });
 
 app.use(errorHandler);
+
+module.exports = app

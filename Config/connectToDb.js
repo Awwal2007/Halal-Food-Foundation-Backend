@@ -4,6 +4,10 @@ dotenv.config()
 
 const mongoDbUri = process.env.Mongo_Uri
 const connectToDb = async ()=>{
+    if (!mongoDbUri) {
+        console.error("Error: Mongo_Uri is not defined in .env file");
+        return;
+    }
     try {
         const connected = await mongoose.connect(mongoDbUri)
         if(connected){
@@ -13,6 +17,6 @@ const connectToDb = async ()=>{
         console.log(error);
     }
 }
-connectToDb()
+
 module.exports = connectToDb
 
